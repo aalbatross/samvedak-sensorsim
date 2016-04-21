@@ -33,7 +33,7 @@ public class GenericSensor extends Sensor {
      */
     public Type getType() {
         // TODO Auto-generated method stub
-        return new Type(Type.IsMeasuredAs.SENSOR, Category.SENSOR_GENERIC, PRODUCT, NAME, MEASURED_UNIT);
+        return new Type(Type.IsMeasuredAs.SENSOR, Category.SENSOR_GENERIC, PRODUCT, NAME, MEASURED_UNIT,this.getFriendlyName());
     }
 
 }

@@ -7,6 +7,7 @@ package com.albatross.sensor.sim.core;
  */
 public class Type {
 
+    
     /**
      *
      */
@@ -28,7 +29,7 @@ public class Type {
 	private String productOf;
 	private String name;
 	private String measurementUnits;
-
+        private String friendlyName;
     /**
      *
      * @param type
@@ -37,13 +38,14 @@ public class Type {
      * @param name
      * @param measurementUnits
      */
-    public Type(IsMeasuredAs type, String ofCategory, String productOf, String name, String measurementUnits) {
+    public Type(IsMeasuredAs type, String ofCategory, String productOf, String name, String measurementUnits,String friendlyName) {
 		super();
 		this.type = type;
 		this.ofCategory = ofCategory;
 		this.productOf = productOf;
 		this.name = name;
 		this.measurementUnits = measurementUnits;
+                this.friendlyName = friendlyName;
 	}
 
     /**
@@ -126,14 +128,18 @@ public class Type {
 		this.measurementUnits = measurementUnits;
 	}
 
+    
     /**
-     *
-     * @return
+     * @return the friendlyName
      */
+    public String getFriendlyName() {
+        return friendlyName;
+    }
+
     @Override
-	public String toString() {
-		return "Type [type=" + type + ", ofCategory=" + ofCategory + ", productOf=" + productOf + ", name=" + name
-				+ ", measurementUnits=" + measurementUnits + "]";
-	}
+    public String toString() {
+        return "Type{" + "type=" + type + ", ofCategory=" + ofCategory + ", productOf=" + productOf + ", name=" + name + ", measurementUnits=" + measurementUnits + ", friendlyName=" + friendlyName + '}';
+    }
+
 
 }

@@ -30,7 +30,7 @@ public class GenericDevice extends Device {
      */
     public Type getType() {
         // TODO Auto-generated method stub
-        return new Type(Type.IsMeasuredAs.DEVICE, Category.DEVICE_GENERIC, PRODUCT, NAME, MEASURED_UNIT);
+        return new Type(Type.IsMeasuredAs.DEVICE, Category.DEVICE_GENERIC, PRODUCT, NAME, MEASURED_UNIT,this.getFriendlyName());
     }
 
 }
