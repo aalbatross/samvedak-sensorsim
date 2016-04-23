@@ -1,9 +1,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.albatross.simulator</groupId>
-	<artifactId>sensorsim</artifactId>
+	<groupId>com.albatross.sensor.sim</groupId>
+	<artifactId>sensorsim-core</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+        <packaging>jar</packaging>
+        <name> sensorsim-core</name>
+        <description>Sensorsim is a API which helps the developers to generate simulated data with abstraction of sensors and devices.</description>
 	<dependencies>
 		<dependency>
 			<groupId>org.apache.commons</groupId>
