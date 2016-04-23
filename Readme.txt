@@ -1,5 +1,11 @@
-How to use:
+Sensorsim is a API which helps the developers to generate simulated data with abstraction of sensors and devices.  
+ 1. It can be used for testing applications which require generating sensor data.
+ 2. Creating data for simulation environment.
+ 3. Simulating a device with lot of Sensors.
+ 4. Sensors of Same and different kind can be evaluated on simulation environment.
 
+How to use:
+Examples
 1. Using Sensor
     eg:
     	import org.apache.commons.math3.distribution.BinomialDistribution;
@@ -33,7 +39,7 @@ How to use:
 Output: 
 {"type":{"type":"SENSOR","ofCategory":"Simulator.GenericSensor","productOf":"albatross","name":"albatross.genericsensor","measurementUnits":"albatross.virtualunits","friendlyName":"GENERICSENSORTEST"},"value":710,"timeOfOccurence":1461266204747,"sourceID":"c3302892-ad18-48a8-b3da-a4286f672d49","unitOfMeasurement":"albatross.virtualunits"}
 
-2. Using Device
+2. Using Device with multiple sensor
 package com.albatross.sensor.sim.test;
 
 import org.apache.commons.math3.distribution.BinomialDistribution;
@@ -77,12 +83,7 @@ public class GenericDeviceTest implements QuantityListener {
 Output : {"type":{"type":"DEVICE","ofCategory":"Simulator.GenericDevice","productOf":"albatross","name":"albatross.genericdevice","measurementUnits":"albatross.nounit","friendlyName":"GENERICDEVICETEST"},"value":[{"type":{"type":"SENSOR","ofCategory":"Simulator.GenericSensor","productOf":"albatross","name":"albatross.genericsensor","measurementUnits":"albatross.virtualunits","friendlyName":"GENERICSENSORTEST1"},"value":409,"timeOfOccurence":1461265976850,"sourceID":"e7b50c2b-4d49-4efc-acc9-6d5a6532a684","unitOfMeasurement":"albatross.virtualunits"},{"type":{"type":"SENSOR","ofCategory":"Simulator.GenericSensor","productOf":"albatross","name":"albatross.genericsensor","measurementUnits":"albatross.virtualunits","friendlyName":"GENERICSENSORTEST2"},"value":294,"timeOfOccurence":1461265976850,"sourceID":"f3bf51ba-b8c2-4bf5-b289-b5a8a5b38346","unitOfMeasurement":"albatross.virtualunits"}],"timeOfOccurence":1461265976937,"sourceID":"533a487f-42d3-4469-8877-012ee2a32fc0","unitOfMeasurement":"albatross.nounit"}
 
 
-3. Using this function a complex device with so many sensors or many sensors of same type can be simulated and developed
 
 
-Application:
- 1. Creating data for simulation environment.
- 2. Simulating a device with lot of Sensors.
- 3. Sensors of Same and different kind can be evaluated for simulation environment.
 
   
