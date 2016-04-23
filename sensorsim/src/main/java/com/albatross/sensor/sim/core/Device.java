@@ -20,16 +20,17 @@ public abstract class Device extends AbstractMeasurer {
      * @param samplingFrequency
      * @param friendlyName
      */
-    public Device(long samplingFrequency, String friendlyName) {
+    public Device(long samplingFrequency, String friendlyName,Vector<AbstractMeasurer> listOfSensors) {
         super(samplingFrequency, friendlyName, new SimulationDataDistribution(new BinomialDistribution(1000, .40)));
-        listOfSensors = new Vector<AbstractMeasurer>();
+        this.listOfSensors = listOfSensors;
+        ensureAllSensorsAreStart();
         // TODO Auto-generated constructor stub
     }
 
     private void ensureAllSensorsAreStart() {
-        for (int i = 0; i < listOfSensors.size(); i++) {
-            if (!listOfSensors.get(i).isAlive()) {
-                listOfSensors.get(i).start();
+        for (AbstractMeasurer listOfSensor : listOfSensors) {
+            if (!listOfSensor.isAlive()) {
+                listOfSensor.start();
             }
         }
     }
@@ -37,6 +38,7 @@ public abstract class Device extends AbstractMeasurer {
     /**
      *
      */
+    @Override
     public void start() {
         super.start();
         ensureAllSensorsAreStart();
@@ -46,7 +48,7 @@ public abstract class Device extends AbstractMeasurer {
      *
      * @param sensor
      */
-    public void addSensorOrDevice(AbstractMeasurer sensor) {
+    protected void addSensorOrDevice(AbstractMeasurer sensor) {
         listOfSensors.addElement(sensor);
         if (!sensor.isAlive()) {
             sensor.start();
@@ -57,7 +59,7 @@ public abstract class Device extends AbstractMeasurer {
      *
      * @param sensor
      */
-    public void removeSensorOrDevice(AbstractMeasurer sensor) {
+    protected void removeSensorOrDevice(AbstractMeasurer sensor) {
         listOfSensors.removeElement(sensor);
     }
 
@@ -67,8 +69,8 @@ public abstract class Device extends AbstractMeasurer {
      */
     public Quantity<?> generateNextQuantity() {
         List<Quantity> value = new ArrayList<Quantity>();
-        for (int i = 0; i < listOfSensors.size(); i++) {
-            value.add(listOfSensors.get(i).getQuantity());
+        for (AbstractMeasurer listOfSensor : listOfSensors) {
+            value.add(listOfSensor.getQuantity());
         }
         return new Quantity(this.getType(), value, this.getSensorID());
     }

@@ -1,8 +1,10 @@
 package com.albatross.sensor.sim.measurables;
 
+import com.albatross.sensor.sim.core.AbstractMeasurer;
 import com.albatross.sensor.sim.core.Category;
 import com.albatross.sensor.sim.core.Device;
 import com.albatross.sensor.sim.core.Type;
+import java.util.Vector;
 
 /**
  * Generic Device Implementation using the API.
@@ -18,10 +20,10 @@ public class GenericDevice extends Device {
      *
      * @param samplingFrequency
      * @param friendlyName
+     * @param listOfSensors
      */
-    public GenericDevice(long samplingFrequency, String friendlyName) {
-        super(samplingFrequency, friendlyName);
-        // TODO Auto-generated constructor stub
+    public GenericDevice(long samplingFrequency, String friendlyName,Vector<AbstractMeasurer> listOfSensors) {
+        super(samplingFrequency, friendlyName,listOfSensors);
     }
 
     /**
@@ -29,7 +31,6 @@ public class GenericDevice extends Device {
      * @return
      */
     public Type getType() {
-        // TODO Auto-generated method stub
         return new Type(Type.IsMeasuredAs.DEVICE, Category.DEVICE_GENERIC, PRODUCT, NAME, MEASURED_UNIT,this.getFriendlyName());
     }
 
