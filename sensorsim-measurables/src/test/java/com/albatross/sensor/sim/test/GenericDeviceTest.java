@@ -12,7 +12,7 @@ import java.util.Vector;
 
 public class GenericDeviceTest implements QuantityListener {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         //Quantity Listener listening device values
         GenericDeviceTest test = new GenericDeviceTest();
         //Generic sensor creation sensor 1
@@ -30,7 +30,8 @@ public class GenericDeviceTest implements QuantityListener {
         device.addQuantityListener(test);
         //starting the device
         device.start();
-
+        Thread.sleep(10000);
+        sensor2.stopMeasurer();
     }
 
     public void getQuantityChangeValues(QuantityChangeEvent evt) {

@@ -15,7 +15,7 @@ public abstract class AbstractMeasurer extends Thread implements Measurer {
     private long samplingFrequency;
     private UUID sensorID;
     private String friendlyName;
-
+    private boolean isStarted=false;
     /**
      *
      */
@@ -74,12 +74,18 @@ public abstract class AbstractMeasurer extends Thread implements Measurer {
         return friendlyName;
     }
 
+    @Override
+    public void start(){
+        isStarted = true;
+        super.start();
+    }
+    
     /**
      *
      */
     @Override
     public void run() {
-        while (true) {
+        while (isStarted) {
             Quantity value = this.generateNextQuantity();
             if (value != null) {
                 sendQuantityChangeEventToAllListener(new QuantityChangeEvent(this, value));
@@ -140,4 +146,11 @@ public abstract class AbstractMeasurer extends Thread implements Measurer {
         this.distribution = distribution;
     }
 
+    /**
+     * stops the device or sensor 
+     */
+    public void stopMeasurer(){
+        isStarted = false;
+        this.quantity = null;
+    }
 }

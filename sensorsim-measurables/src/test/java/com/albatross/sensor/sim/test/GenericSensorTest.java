@@ -9,12 +9,14 @@ import com.albatross.sensor.sim.measurables.sensors.GenericSensor;
 
 public class GenericSensorTest implements QuantityListener {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		GenericSensorTest test = new GenericSensorTest();
 		GenericSensor sensor = new GenericSensor(4000, "GENERICSENSORTEST",
 				new SimulationDataDistribution(new BinomialDistribution(1000, .70)));
 		sensor.addQuantityListener(test);
 		sensor.start();
+                Thread.sleep(10000);
+                sensor.stopMeasurer();
 	}
 
 	public void getQuantityChangeValues(QuantityChangeEvent evt) {
